@@ -35,7 +35,8 @@
 
 			function statusChangeCallback(response) {
 				if (response.status === "connected") {
-					console.log(response.authResponse.accessToken);
+					localStorage.setItem("fbToken", response.authResponse.accessToken);
+					// console.log(response.authResponse.accessToken);
 					console.log("User is Logged In and Authenticated");
 				} else {
 					console.log("Not Authenticated");
@@ -47,10 +48,6 @@
 					statusChangeCallback(response);
 				});
 			}
-
-			FB.api("/me", function (response) {
-				console.log(JSON.stringify(response));
-			});
 		</script>
 
 		<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">

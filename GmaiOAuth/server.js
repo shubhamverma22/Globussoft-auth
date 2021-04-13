@@ -23,6 +23,10 @@ app.get("/login", (req, res) => {
 	res.render("login.ejs");
 });
 
+app.get("/fblogin", (req, res) => {
+	res.render("fblogin.ejs");
+});
+
 app.post("/login", (req, res) => {
 	let token = req.body.token;
 	console.log(token);

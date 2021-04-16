@@ -4,7 +4,6 @@ const app = express();
 const {
 	fibo,
 	fact,
-	login,
 	profile,
 	logout,
 	checkAuthenticated,
@@ -13,7 +12,7 @@ const {
 	getLogin,
 	postLogin,
 	index,
-} = require("./Controllers/operations");
+} = require("./GmaiOAuth/Controllers/operations");
 
 //Google Auth
 const { OAuth2Client } = require("google-auth-library");

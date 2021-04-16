@@ -1,19 +1,27 @@
 exports.fibo = (req, res) => {
 	var num = parseInt(req.params.num);
 	console.log(typeof num);
-	let n2;
-	function fibo(num) {
-		var n1 = 0;
-		var n2 = 1;
-		var sum = 0;
-		for (let j = 0; j < num; j++) {
-			sum = n1 + n2;
-			n1 = n2;
-			n2 = sum;
+	if (typeof num !== "number") {
+		return res.status(201).json({ err: "Only Numbers are allowed" });
+	} else {
+		let n2;
+		function fibo(num) {
+			var n1 = 0;
+			var n2 = 1;
+			let fiboArr = [];
+			var sum = 0;
+			for (let j = 0; j < num; j++) {
+				sum = n1 + n2;
+				n1 = n2;
+				n2 = sum;
+				console.log(sum);
+				fiboArr.push(sum);
+			}
+			return { arr: fiboArr, sum: n2 };
 		}
-		console.log(n2);
+		let value = fibo(num);
+		res.send({ series: value });
 	}
-	res.send(n2);
 };
 
 exports.fact = (req, res) => {
@@ -31,10 +39,11 @@ exports.fact = (req, res) => {
 				factvar *= i;
 			}
 			console.log(`Factorial is ${factvar}`);
+			return factvar;
 		}
 	}
-	fact(num);
-	res.send(factvar);
+	let value = fact(num);
+	res.send({ factorial: value });
 };
 
 exports.postLogin = (req, res) => {

@@ -12,7 +12,7 @@ const {
 	getLogin,
 	postLogin,
 	index,
-} = require("./GmaiOAuth/Controllers/operations");
+} = require("./Controllers/operations");
 
 //Google Auth
 const { OAuth2Client } = require("google-auth-library");
